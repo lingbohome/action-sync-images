@@ -33,6 +33,7 @@ jobs:
     - name: Use Skopeo Tools Sync Image to Docker Hub
       run: |
         #!/usr/bin/env bash
+        echo -e '[registries.insecure]\nregistries = ["hub.cloud.lingbohome.com"]' | sudo tee -a /etc/containers/registries.conf
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-controller:v0.54.0
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/events:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-events:v0.54.0
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/resolvers:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-resolvers:v0.54.0
