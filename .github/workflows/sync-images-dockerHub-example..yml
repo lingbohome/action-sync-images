@@ -34,7 +34,13 @@ jobs:
       run: |
         #!/usr/bin/env bash
         echo -e '[registries.insecure]\nregistries = ["hub.cloud.lingbohome.com"]' | sudo tee -a /etc/containers/registries.conf
-        skopeo copy docker://gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.42.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-dashboards-dashboard:v0.42.0
+        skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:v0.54.0@sha256:40abc3a78b558f251e890085972ed25fe7ad428f47998bc9c9c18f564dc03c32 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-entrypoint:v0.54.0
+        skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:v0.54.0@sha256:6efc68fea272c4e523e1909a1f95aaf2f9c8c9e74caa610c540070d336a2edb9 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-nop:v0.54.0
+        skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/sidecarlogresults:v0.54.0@sha256:5649d15d21d72c68623f771b36fe6d3cc6866d38d09a2897820bc185d4b912b6 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-sidecarlogresults:v0.54.0
+        skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:v0.54.0@sha256:4ce4607a0d54ff3dc33062e1e03481cd1e6547b1c6a2ca4c1ad383ad56a10e37 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-workingdirinit:v0.54.0
+        skopeo copy  docker://cgr.dev/chainguard/busybox@sha256:19f02276bf8dbdd62f069b922f10c65262cc34b710eea26ff928129a736be791 docker://hub.cloud.lingbohome.com/cgr-sync/chainguard/busybox
+        skopeo copy  docker://mcr.microsoft.com/powershell:nanoserver@sha256:b6d5ff841b78bdf2dfed7550000fd4f3437385b8fa686ec0f010be24777654d6 docker://hub.cloud.lingbohome.com/mcr-sync/powershell:nanoserver
+        # skopeo copy docker://gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.42.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-dashboards-dashboard:v0.42.0
         # skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.25.3 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-triggers-controller:v0.25.3
         # skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:v0.25.3 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-triggers-webhook:v0.25.3
         # skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:v0.25.3 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-triggers-interceptors:v0.25.3
