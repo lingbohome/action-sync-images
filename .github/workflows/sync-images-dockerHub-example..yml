@@ -34,12 +34,13 @@ jobs:
       run: |
         #!/usr/bin/env bash
         echo -e '[registries.insecure]\nregistries = ["hub.cloud.lingbohome.com"]' | sudo tee -a /etc/containers/registries.conf
-        skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-entrypoint:v0.54.0
-        skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-nop:v0.54.0
-        skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/sidecarlogresults:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-sidecarlogresults:v0.54.0
-        skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-workingdirinit:v0.54.0
-        skopeo copy  docker://cgr.dev/chainguard/busybox docker://hub.cloud.lingbohome.com/cgr-sync/chainguard/busybox
-        skopeo copy  docker://mcr.microsoft.com/powershell:nanoserver docker://hub.cloud.lingbohome.com/mcr-sync/powershell:nanoserver
+        skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.40.2 docker://hub.cloud.lingbohome.com/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.40.2
+        # skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-entrypoint:v0.54.0
+        # skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-nop:v0.54.0
+        # skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/sidecarlogresults:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-sidecarlogresults:v0.54.0
+        # skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit:v0.54.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-workingdirinit:v0.54.0
+        # skopeo copy  docker://cgr.dev/chainguard/busybox docker://hub.cloud.lingbohome.com/cgr-sync/chainguard/busybox
+        # skopeo copy  docker://mcr.microsoft.com/powershell:nanoserver docker://hub.cloud.lingbohome.com/mcr-sync/powershell:nanoserver
         # skopeo copy docker://gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.42.0 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-dashboards-dashboard:v0.42.0
         # skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.25.3 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-triggers-controller:v0.25.3
         # skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:v0.25.3 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-triggers-webhook:v0.25.3
