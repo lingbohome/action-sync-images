@@ -35,8 +35,9 @@ jobs:
       run: |
         #!/usr/bin/env bash
         echo -e '[registries.insecure]\nregistries = ["hub.cloud.lingbohome.com"]' | sudo tee -a /etc/containers/registries.conf
-        skopeo login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
-        skopeo copy  docker://docker.io/paketobuildpacks/run-jammy-base:0.1.94 docker://registry.cn-shanghai.aliyuncs.com/kube-shipper/system:0.1.94
+        skopeo copy  docker://gcr.io/distroless/static:nonroot docker://hub.cloud.lingbohome.com/distroless/static:nonroot
+        # skopeo login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+        # skopeo copy  docker://docker.io/paketobuildpacks/run-jammy-base:0.1.94 docker://registry.cn-shanghai.aliyuncs.com/kube-shipper/system:0.1.94
         # skopeo copy  docker://kubesphere/helm:v3.12.1 docker://hub.cloud.lingbohome.com/kubesphere/helm:v3.12.1
         # skopeo copy  docker://gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller:v0.54.2 docker://hub.cloud.lingbohome.com/gcr-sync/tektoncd-pipeline-controller:v0.54.2
         # skopeo copy docker://gcr.io/kaniko-project/executor:v1.19.2 docker://hub.cloud.lingbohome.com/kaniko-project/executor:v1.19.2
