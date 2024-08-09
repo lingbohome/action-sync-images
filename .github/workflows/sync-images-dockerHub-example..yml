@@ -36,6 +36,9 @@ jobs:
         #!/usr/bin/env bash
         echo -e '[registries.insecure]\nregistries = ["hub.cloud.lingbohome.com"]' | sudo tee -a /etc/containers/registries.conf
         skopeo login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} registry.cn-shanghai.aliyuncs.com
+        skopeo copy  docker://docker.io/paketobuildpacks/builder-jammy-base:0.4.321 docker://registry.cn-shanghai.aliyuncs.com/kube-shipper/paketo-cnb-builder-jammy-base:0.4.321
+        skopeo copy  docker://docker.io/paketobuildpacks/run-jammy-base:0.1.124 docker://registry.cn-shanghai.aliyuncs.com/kube-shipper/paketo-cnb-run-jammy-base:0.1.124
+        skopeo copy  docker://docker.io/paketobuildpacks/run-jammy-base:0.1.95 docker://registry.cn-shanghai.aliyuncs.com/kube-shipper/paketo-cnb-run-jammy-base:0.1.95
         # skopeo copy  docker://hub.cloud.lingbohome.com/kaniko-project/executor:v1.5.1 docker://registry.cn-shanghai.aliyuncs.com/kube-shipper/kaniko-project-executor:v1.5.1
         # skopeo copy  docker://hub.cloud.lingbohome.com/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.40.2 docker://registry.cn-shanghai.aliyuncs.com/kube-shipper/tektoncd-pipeline-cmd-git-init:v0.40.2
         # skopeo copy  docker://hub.cloud.lingbohome.com/paketobuildpacks/builder-jammy-base:0.4.265 docker://registry.cn-shanghai.aliyuncs.com/kube-shipper/paketo-cnb-builder-jammy-base:0.4.265
